@@ -26,6 +26,16 @@ class WishlistView extends GetView<WishlistController> {
           ),
         ),
         actions: [
+          // Tombol Hapus Semua Wishlist (Hanya tampil jika ada item)
+          Obx(() {
+            if (controller.totalCount == 0) return const SizedBox.shrink();
+            return IconButton(
+              tooltip: 'Kosongkan Wishlist',
+              icon: const Icon(Icons.delete_sweep_rounded, color: Colors.redAccent),
+              onPressed: () => controller.clearWishlist(),
+            );
+          }),
+
           // Navigasi ke Keranjang Belanja dengan Badge Kuantitas Reaktif (Sesi 03)
           Stack(
             alignment: Alignment.center,
